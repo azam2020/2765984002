@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Report: CPU Thermal Throttling on High Workload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 10px;
+            min-height: 50px;
+            border-bottom: #ddd 3px solid;
+        }
+        header h1 {
+            text-align: center;
+            margin: 0;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+        }
+        section {
+            padding: 20px;
+            background: #fff;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            background: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Issue Report: CPU Thermal Throttling on High Workload</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>Issue Summary</h2>
+            <p><strong>HSD No.:</strong> 2765984002</p>
+            <p><strong>Title:</strong> CPU Thermal Throttling During Sustained High Workload</p>
+            <p><strong>Description:</strong> When running a sustained high workload, the CPU experiences thermal throttling, leading to performance degradation. This results in slower computation speeds and potential system instability.</p>
+        </section>
+
+        <section>
+            <h2>Hardware Configuration</h2>
+            <ul>
+                <li><strong>Hardware Model:</strong> Lenovo ThinkSystem SR650</li>
+                <li><strong>CPU:</strong> Intel Xeon Gold 6130 (2x)</li>
+                <li><strong>Cooling System:</strong> Standard Air Cooling</li>
+                <li><strong>Memory:</strong> 256 GB RAM</li>
+                <li><strong>Network Adapter:</strong> Broadcom NetXtreme 10G</li>
+                <li><strong>Firmware Version:</strong> 1.9.2</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Software Configuration</h2>
+            <ul>
+                <li><strong>Operating System:</strong> Ubuntu 20.04 LTS</li>
+                <li><strong>Kernel Version:</strong> 5.4.0-90-generic</li>
+                <li><strong>Thermal Management Tool:</strong> <code>lm-sensors 3.6.0</code></li>
+                <li><strong>Network Driver Version:</strong> bnxt_en 1.10.0</li>
+                <li><strong>Workload Management:</strong> <code>stress-ng 0.11.24</code></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Steps to Reproduce</h2>
+            <ol>
+                <li>Install Ubuntu 20.04 on the Lenovo ThinkSystem SR650 server.</li>
+                <li>Configure CPU performance scaling using <code>cpufrequtils</code>.</li>
+                <li>Run a stress test using <code>stress-ng --cpu 48 --timeout 600</code> to generate sustained CPU load.</li>
+                <li>Monitor CPU temperature and frequency using <code>lm-sensors</code> and <code>watch -n 1 sensors</code>.</li>
+                <li>Observe the CPU frequency reduction and increased temperature.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Expected Result</h2>
+            <p>The CPU should maintain stable performance during the sustained workload without significant thermal throttling or performance degradation.</p>
+        </section>
+
+        <section>
+            <h2>Actual Result</h2>
+            <p>The CPU begins throttling after a few minutes of stress, with frequency dropping significantly and performance degrading due to high temperatures.</p>
+        </section>
+
+        <section>
+            <h2>Attached Files</h2>
+            <ul>
+                <li><a href="files/thermal-readings.txt" download>Thermal Readings</a></li>
+                <li><a href="files/cpu-frequency-stats.txt" download>CPU Frequency Statistics</a></li>
+                <li><a href="files/stress-ng-output.txt" download>Stress-ng Output</a></li>
+                <li><a href="files/system-logs.txt" download>System Logs</a></li>
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
